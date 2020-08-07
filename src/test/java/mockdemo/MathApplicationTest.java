@@ -55,6 +55,14 @@ public class MathApplicationTest {
 	}
 	
 	@Test
+	public void testMultiply() {
+		//add the behavior of calc service to multiply two numbers
+		when(calcService.multiply(20.0,10.0)).thenReturn(200.00);
+		//test the multiply functionality
+		Assert.assertEquals(mathApplication.multiply(20.0, 10.0),200.0,0.0);
+	}
+	
+	@Test
 	public void testDivide() {
 		//add the behavior to throw exception
 		doThrow(new ArithmeticException("Division by Zero"))
