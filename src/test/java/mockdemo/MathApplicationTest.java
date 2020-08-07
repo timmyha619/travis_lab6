@@ -99,7 +99,7 @@ public class MathApplicationTest {
 		}
 		
 		// now test a normal case
-		when(calcService.modulus(20.0,10.0)).thenReturn(2.00);
+		when(calcService.modulus(20.0,10.0)).thenReturn(0.00);
 		//test the modulus functionality
 		Assert.assertEquals(mathApplication.modulus(20.0, 10.0),2.0,0.0);
 	}
