@@ -82,5 +82,26 @@ public class MathApplicationTest {
 		//test the modulus functionality
 		Assert.assertEquals(mathApplication.divide(20.0, 10.0),2.0,0.0);
 	}
+	
+	@Test
+	public void testModulus() {
+		//add the behavior to throw exception
+		doThrow(new ArithmeticException("Division by Zero"))
+				.when(calcService).divide(10.0,0.0);
+		try
+		{
+			mathApplication.modulus(10.0, 0.0);
+		} catch ( ArithmeticException exc )
+		{	
+			String expected = "Division by Zero";
+			String actual = exc.getMessage();
+			Assert.assertEquals( expected, actual );
+		}
+		
+		// now test a normal case
+		when(calcService.modulus(20.0,10.0)).thenReturn(2.00);
+		//test the modulus functionality
+		Assert.assertEquals(mathApplication.modulus(20.0, 10.0),2.0,0.0);
+	}
 
 }
